@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include jitsi *.css
+recursive-include jitsi *.csv
+recursive-include jitsi *.html
+recursive-include jitsi *.ico
+recursive-include jitsi *.js
+recursive-include jitsi *.json
+recursive-include jitsi *.md
+recursive-include jitsi *.png
+recursive-include jitsi *.py
+recursive-include jitsi *.svg
+recursive-include jitsi *.txt
+recursive-exclude jitsi *.pyc
