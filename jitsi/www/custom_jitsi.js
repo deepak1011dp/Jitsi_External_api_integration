@@ -1,25 +1,6 @@
-// function getData() {
-//     $.ajax({
-//         type: "Get",
-//         url: "/custom_jitsi.py",
-//         success: callbackFunc
-//     });
-// }
-// function callbackFunc(r) {
-//     console.log(r)
-// }
-// getData()
 var link_add=null
 var room_id;
 frappe.ui.form.on('Jitsi Meeting', {
-	// refresh: function(frm) {
-
-	// }
-	start: function(frm) {
-        alert('ok')
-		// location.href = "/meetingpage"
-        // window.open('/meetingpage','_blank')
-	},
 	generate_link: function(frm) {
 		console.log('Hello')
 		frm.set_value('meeting_link', 'meet.jit.si/'+makeid(10));
