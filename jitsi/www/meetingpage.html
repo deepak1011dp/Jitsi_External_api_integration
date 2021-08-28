@@ -1,5 +1,5 @@
-<html>
-    <head>
+<head>
+
         <style>
             .container {
                 position: relative;
@@ -11,19 +11,33 @@
         </style>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src='https://meet.jit.si/external_api.js'></script>
-        <script src='./custom_jitsi.js'></script>
-
-    </head>
-    <body>
+        <!-- <script src='./custom_jitsi.js'></script> -->
+</head>
+	<body>
         <div class="container">
             <div id="meet"></div>
         </div>
     </body>
     <script>
-        $(function(){
-            StartMeeting()
-        })
+        console.log(window.location.href);
+        let url = window.location.href;
+	    let room = url.substring(url.lastIndexOf("=")+1);
+        //console.log(room)
+        const domain = 'meet.jit.si';
+            const options = {
+                roomName: room,
+                width: 1000,
+                height: 500,
+                parentNode: document.querySelector('#meet') ,
+                configOverwrite: {
+                    enableClosePage: true,
+
+                },
+                interfaceConfigOverwrite: {
+                    TOOLBAR_BUTTONS: ['hangup', 'camera']
+                }
+            };
+            var api = new JitsiMeetExternalAPI(domain, options); 
     </script>
-</html>
 
 

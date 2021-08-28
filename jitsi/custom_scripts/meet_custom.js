@@ -3,22 +3,11 @@ frappe.ui.form.on('Jitsi Meeting', {
 
 	// }
 	generate_link: function(frm) {
-		console.log('ello')
-        var room_name = makeid(10)
-        console.log(room_name,'5555')
-        return frappe.call({
-            method: 'jitsi.www.create_page.create_page',
-            args: {
-                roomname: room_name,
-            },
-            callback: function(r) {
-                console.log(r.message)
-                frm.set_value('meeting_link', window.origin+"/"+r.message);
-            }
-        })    
+    let id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7);
+		frm.set_value('meeting_link', 'http://localhost:8000/meetingpage?room='+id);
 	},
-    start: function(frm) {
-        window.open(frm.doc.meeting_link, "_blank")
+  start: function(frm) {
+    window.open(frm.doc.meeting_link, "_blank")
 	}
 });
 
