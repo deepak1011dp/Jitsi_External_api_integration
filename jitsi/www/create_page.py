@@ -1,7 +1,7 @@
 import frappe
 import os
 @frappe.whitelist()
-def create_page(roomname=None):
+def create_page(roomname=None, audio=None):
     text = """ <html>
         <head>
             <style>
@@ -33,14 +33,14 @@ def create_page(roomname=None):
                         enableClosePage: true,
                     }},
                     interfaceConfigOverwrite: {{
-                        TOOLBAR_BUTTONS: ['hangup', 'camera']
+                        TOOLBAR_BUTTONS: ['hangup', 'camera', '{audio}']
                     }}
                 }};
                 var api = new JitsiMeetExternalAPI(domain, options); 
         </script>
     </html> 
 """ 
-    data = text.format(roomname=roomname)
+    data = text.format(roomname=roomname, audio=audio)
     save_path = os.path.dirname(__file__) # absolute dir the script is in
     # html file name unique
     count = 1
