@@ -4,6 +4,7 @@ frappe.ui.form.on('Jitsi Meeting', {
 	// }
 	generate_link: function(frm) {
     // create room id (we can use makeid as well)
+    // we can send other arguments in link so we can use it for dynamic customization
     let id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7);
 		frm.set_value('meeting_link', 'http://localhost:8000/meetingpage?room='+id);
 	},
@@ -23,3 +24,15 @@ function makeid(length) {
    }
    return result;
 }
+
+// frappe.ui.form.on("Jitsi Meeting", "refresh", function(frm) {
+//   frm.add_custom_button(__("Send"), function() {
+//       frappe.call({
+//         method : "jitsi.www.send_mail.send_notifications",
+//         args : {
+//           user : frm.doc.users,
+//           link : frm.doc.meeting_link,
+//         }
+//       })
+//   })
+// });
