@@ -3,10 +3,14 @@ frappe.ui.form.on('Jitsi Meeting', {
 
 	// }
 	generate_link: function(frm) {
-    // create room id (we can use makeid as well)
     // we can send other arguments in link so we can use it for dynamic customization
+    let button=''
+    if (frm.doc.audio_button) {
+      button = 'microphone'
+    }
+    // create room id (we can use makeid as well)
     let id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7);
-		frm.set_value('meeting_link', 'http://localhost:8000/meetingpage?room='+id);
+		frm.set_value('meeting_link', 'http://localhost:8000/meetingpage/?room='+id+'&btn='+button);
 	},
   start: function(frm) {
     window.open(frm.doc.meeting_link, "_blank")

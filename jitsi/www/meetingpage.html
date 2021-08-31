@@ -19,9 +19,10 @@
         </div>
     </body>
     <script>
-        console.log(window.location.href);
-        let url = window.location.href;
-	    let room = url.substring(url.lastIndexOf("=")+1);
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+	    const room = urlParams.get('room')
+        const button = urlParams.get('btn')
         //console.log(room)
         const domain = 'meet.jit.si';
             const options = {
@@ -34,7 +35,7 @@
 
                 },
                 interfaceConfigOverwrite: {
-                    TOOLBAR_BUTTONS: ['hangup', 'camera']
+                    TOOLBAR_BUTTONS: ['hangup', 'camera', button]
                 }
             };
             var api = new JitsiMeetExternalAPI(domain, options); 
