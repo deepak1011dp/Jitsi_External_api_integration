@@ -17,6 +17,7 @@ app_license = "MIT"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/jitsi/css/jitsi.css"
 # app_include_js = "/assets/jitsi/js/jitsi.js"
+app_include_js = "/assets/jitsi/node_modules/crypto-js/crypto-js.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/jitsi/css/jitsi.css"

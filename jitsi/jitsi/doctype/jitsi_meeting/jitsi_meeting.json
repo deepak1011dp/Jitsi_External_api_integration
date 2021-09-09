@@ -1,23 +1,23 @@
 {
  "actions": [],
  "allow_guest_to_view": 1,
- "autoname": "Meeting.###",
+ "autoname": "format:{subject}-{#}",
  "creation": "2021-06-24 14:37:18.717363",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "room_name",
+  "subject",
+  "password",
   "section_break_2",
+  "generate_link",
+  "meeting_link",
+  "user",
+  "start",
   "amended_from",
   "route"
  ],
  "fields": [
-  {
-   "fieldname": "room_name",
-   "fieldtype": "Data",
-   "label": "Room Name"
-  },
   {
    "fieldname": "section_break_2",
    "fieldtype": "Section Break"
@@ -34,17 +34,55 @@
   {
    "fieldname": "route",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Route"
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Data",
+   "label": "Password"
+  },
+  {
+   "depends_on": "eval:doc.docstatus!=1",
+   "fieldname": "generate_link",
+   "fieldtype": "Button",
+   "label": "Generate Link"
+  },
+  {
+   "fieldname": "meeting_link",
+   "fieldtype": "Text",
+   "label": "Meeting Link",
+   "read_only": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Table",
+   "label": "User",
+   "options": "Jitsi User"
+  },
+  {
+   "depends_on": "eval:doc.docstatus == 1",
+   "fieldname": "start",
+   "fieldtype": "Button",
+   "label": "Start"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subject",
+   "reqd": 1
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-07-19 13:27:52.640556",
+ "modified": "2021-09-01 15:08:41.329602",
  "modified_by": "Administrator",
  "module": "Jitsi",
  "name": "Jitsi Meeting",
+ "name_case": "Title Case",
  "owner": "Administrator",
  "permissions": [
   {
